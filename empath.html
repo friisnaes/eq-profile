@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Demoprofil: Den empatiske mediator | EQ Profile Executive</title>
+<meta name="description" content="Eksempel på fuld EQ Profile Executive-rapport: HR-direktøren med suveræn empati og lav beslutningskraft. Skygge: undgår de svære beslutninger til de bliver akutte." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://friisnaes.com/eq-profile/demos/empath.html" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Demoprofil: Den empatiske mediator" />
+<meta property="og:description" content="CHRO med høj empati og lav beslutningskraft under pres. Eksempel på en fuld coachrapport." />
+<meta property="og:locale" content="da_DK" />
+
+<style>
+/* =====================================================
+   EQ Profile — Friisnæs design system
+   Editorial, restrained, executive
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Manrope:wght@300..600&display=swap');
+
+:root {
+  /* Palette — warm editorial */
+  --bg: #FAF8F3;
+  --bg-alt: #F4F0E6;
+  --bg-pure: #FFFFFF;
+  --bg-deep: #1A1611;
+  --ink: #1A1611;
+  --ink-soft: #3D362C;
+  --muted: #6B6358;
+  --line: #E8E2D5;
+  --line-soft: #F0EBDD;
+
+  /* Accents */
+  --oxblood: #7C3A40;
+  --forest: #2D4A30;
+  --gold: #A88857;
+  --rose: #C9A0A0;
+
+  /* Score interpretation */
+  --score-1: #B85450;
+  --score-2: #C9904A;
+  --score-3: #5B7A8C;
+  --score-4: #4A7958;
+  --score-5: #6B5B95;
+
+  /* Type */
+  --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --sans: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Layout */
+  --container: 1200px;
+  --container-narrow: 880px;
+  --gutter: clamp(20px, 4vw, 40px);
+  --section-y: clamp(64px, 9vw, 128px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14110D;
+    --bg-alt: #1C1814;
+    --bg-pure: #0F0D0A;
+    --bg-deep: #0F0D0A;
+    --ink: #F0EBDD;
+    --ink-soft: #C9C0AE;
+    --muted: #8B8273;
+    --line: #2A251E;
+    --line-soft: #1F1B16;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'ss01', 'cv11';
+}
+
+/* Selection */
+::selection { background: var(--ink); color: var(--bg); }
+
+/* Container */
+.wrap { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+.wrap-narrow { max-width: var(--container-narrow); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--ink);
+  font-feature-settings: 'ss01';
+}
+
+h1 {
+  font-size: clamp(40px, 7vw, 84px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  font-weight: 350;
+}
+
+h2 {
+  font-size: clamp(32px, 4.5vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  font-weight: 350;
+}
+
+h3 {
+  font-size: clamp(22px, 2.4vw, 28px);
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 500;
+  font-family: var(--sans);
+  letter-spacing: 0;
+}
+
+em, .ital {
+  font-style: italic;
+  font-feature-settings: 'ss01';
+}
+
+p {
+  margin: 0 0 1em;
+  max-width: 62ch;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--line);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+a:hover { border-color: var(--oxblood); color: var(--oxblood); }
+
+/* Eyebrow / kicker */
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+
+.eyebrow-num {
+  display: inline-block;
+  font-family: var(--sans);
+  font-variant-numeric: tabular-nums;
+  margin-right: 12px;
+  color: var(--oxblood);
+}
+
+/* Numeric markers (01, 02, 03 — Friisnæs signature) */
+.num {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  color: var(--oxblood);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 26px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  background: transparent;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.btn:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+.btn-primary:hover { background: var(--oxblood); border-color: var(--oxblood); color: var(--bg); }
+
+.btn-ghost {
+  border-color: var(--line);
+  color: var(--ink-soft);
+}
+
+.btn-ghost:hover { border-color: var(--ink); background: transparent; color: var(--ink); }
+
+.btn-arrow::after {
+  content: '→';
+  margin-left: 4px;
+  transition: transform 0.2s;
+}
+.btn:hover .btn-arrow::after, .btn-arrow:hover::after { transform: translateX(3px); }
+
+/* Section rhythm */
+section { padding: var(--section-y) 0; }
+.section-pure { background: var(--bg-pure); }
+.section-alt { background: var(--bg-alt); }
+.section-deep { background: var(--bg-deep); color: var(--bg); }
+.section-deep h1, .section-deep h2, .section-deep h3 { color: var(--bg); }
+.section-deep .muted, .section-deep .eyebrow { color: rgba(250,248,243,0.6); }
+
+/* Hairline */
+.hr { height: 1px; background: var(--line); margin: 0; border: none; }
+
+/* Header / Nav */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(250, 248, 243, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 18px var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  border: none;
+  color: var(--ink);
+}
+
+.brand .ii { font-style: italic; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 14px;
+}
+
+.nav-links a {
+  border: none;
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+.nav-links a:hover { color: var(--oxblood); }
+
+.nav-links a.nav-cta {
+  padding: 10px 18px;
+  font-size: 13px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 500;
+}
+
+.nav-links a.nav-cta:hover { background: var(--oxblood); border-color: var(--oxblood); color: var(--bg); }
+
+@media (max-width: 720px) {
+  .nav-links a:not(.nav-cta) { display: none; }
+}
+
+/* Hero */
+.hero {
+  padding: clamp(60px, 10vw, 140px) 0 clamp(60px, 9vw, 120px);
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--oxblood);
+  font-weight: 500;
+  margin-bottom: 28px;
+}
+
+.hero h1 { max-width: 14ch; margin-bottom: 0.4em; }
+
+.hero-lede {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.4;
+  color: var(--ink-soft);
+  max-width: 32ch;
+  margin: 0 0 2.5rem;
+  font-weight: 350;
+  font-style: italic;
+}
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 2rem; }
+
+.hero-tagline {
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  margin-top: 1.5rem;
+  font-style: italic;
+}
+
+/* Stats strip */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.stat {
+  padding: 32px 24px;
+  border-right: 1px solid var(--line);
+}
+.stat:last-child { border-right: none; }
+
+.stat-num {
+  font-family: var(--serif);
+  font-size: 44px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Pricing */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0;
+  border: 1px solid var(--line);
+  background: var(--bg-pure);
+}
+
+.pricing-card {
+  padding: 36px 28px 32px;
+  border-right: 1px solid var(--line);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.pricing-card:last-child { border-right: none; }
+
+@media (max-width: 880px) {
+  .pricing-card { border-right: none; border-bottom: 1px solid var(--line); }
+  .pricing-card:last-child { border-bottom: none; }
+}
+
+.pricing-card.featured {
+  background: var(--bg-deep);
+  color: var(--bg);
+}
+.pricing-card.featured h3, .pricing-card.featured .price { color: var(--bg); }
+.pricing-card.featured .pricing-features { color: rgba(250,248,243,0.78); }
+.pricing-card.featured .pricing-tag { background: var(--gold); color: var(--bg-deep); }
+
+.pricing-tag {
+  position: absolute;
+  top: -1px; left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--ink);
+  color: var(--bg);
+  padding: 4px 14px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.pricing-name {
+  font-family: var(--serif);
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  font-weight: 400;
+}
+
+.pricing-sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 24px;
+  letter-spacing: 0.01em;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.price-num {
+  font-family: var(--serif);
+  font-size: 44px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+
+.price-cur {
+  font-size: 14px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  flex: 1;
+}
+
+.pricing-features li {
+  padding: 7px 0 7px 22px;
+  position: relative;
+  border-bottom: 1px solid var(--line-soft);
+}
+.pricing-features li:last-child { border-bottom: none; }
+
+.pricing-features li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--oxblood);
+  font-weight: 500;
+}
+
+.pricing-card.featured .pricing-features li {
+  border-bottom-color: rgba(250,248,243,0.1);
+}
+.pricing-card.featured .pricing-features li::before { color: var(--gold); }
+
+/* Demo profile cards */
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.demo-card {
+  background: var(--bg-pure);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  border: none;
+  transition: background 0.2s;
+}
+
+.demo-card:hover { background: var(--bg-alt); border: none; }
+
+.demo-num {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--oxblood);
+  font-weight: 500;
+  margin-bottom: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.demo-name {
+  font-family: var(--serif);
+  font-size: 26px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.demo-name em { color: var(--oxblood); }
+
+.demo-tag {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 18px;
+}
+
+.demo-desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 20px;
+  flex: 1;
+}
+
+.demo-mini-bars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  height: 28px;
+  align-items: flex-end;
+}
+
+.demo-mini-bars > div {
+  flex: 1;
+  border-radius: 1px;
+  min-height: 4px;
+  opacity: 0.85;
+}
+
+.demo-cta {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.demo-cta::after {
+  content: '→';
+  transition: transform 0.2s;
+}
+
+.demo-card:hover .demo-cta::after { transform: translateX(3px); }
+
+/* Process / 3-up sections */
+.three-up {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.three-up > div {
+  padding: 40px 32px 40px 0;
+  border-right: 1px solid var(--line);
+}
+.three-up > div:last-child { border-right: none; padding-right: 0; }
+
+@media (max-width: 880px) {
+  .three-up > div { border-right: none; border-bottom: 1px solid var(--line); padding: 32px 0; }
+  .three-up > div:last-child { border-bottom: none; }
+}
+
+.three-up h3 { margin-top: 18px; margin-bottom: 12px; }
+.three-up .num { display: block; margin-bottom: 8px; }
+.three-up p { font-size: 15px; color: var(--ink-soft); margin: 0; }
+
+/* Domain visualization */
+.domain-table {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-pure);
+}
+
+.domain-row {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line-soft);
+  display: grid;
+  grid-template-columns: 60px 1fr 2fr;
+  gap: 32px;
+  align-items: baseline;
+}
+
+.domain-row:last-child { border-bottom: none; }
+
+.domain-row .num { padding-top: 6px; }
+
+.domain-name {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.domain-facets {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.domain-facets em {
+  color: var(--ink);
+  font-style: italic;
+  font-weight: 500;
+}
+
+@media (max-width: 720px) {
+  .domain-row { grid-template-columns: 1fr; gap: 6px; padding: 20px 0; }
+}
+
+/* FAQ */
+.faq-grid { display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--line); }
+
+.faq-item {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 32px;
+}
+
+.faq-item .num { padding-top: 6px; }
+
+.faq-q {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+
+.faq-a {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 70ch;
+}
+
+@media (max-width: 720px) {
+  .faq-item { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* Closing CTA */
+.closing {
+  text-align: left;
+  padding: clamp(80px, 12vw, 160px) 0;
+}
+
+.closing h2 { max-width: 18ch; margin-bottom: 32px; }
+.closing-tag {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 24px;
+  letter-spacing: 0.01em;
+}
+
+/* Footer */
+footer {
+  background: var(--bg-deep);
+  color: rgba(250,248,243,0.78);
+  padding: 60px 0 32px;
+  font-size: 14px;
+}
+
+footer .wrap { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+
+@media (max-width: 720px) { footer .wrap { grid-template-columns: 1fr 1fr; } }
+
+footer h4 {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(250,248,243,0.5);
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+footer ul { list-style: none; padding: 0; margin: 0; }
+footer li { margin-bottom: 10px; }
+footer a {
+  color: rgba(250,248,243,0.78);
+  border: none;
+  font-size: 14px;
+}
+footer a:hover { color: var(--gold); }
+
+.footer-brand {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--bg);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.footer-brand .ii { font-style: italic; }
+
+.footer-tag {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(250,248,243,0.6);
+  max-width: 32ch;
+  margin: 0;
+  font-style: italic;
+}
+
+.footer-bottom {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(250,248,243,0.1);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 12px;
+  color: rgba(250,248,243,0.5);
+}
+
+/* =====================================================
+   Test page specifics
+   ===================================================== */
+
+.test-shell {
+  min-height: calc(100vh - 200px);
+  padding: 60px 0;
+}
+
+.test-progress {
+  position: sticky;
+  top: 60px;
+  background: var(--bg);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  z-index: 10;
+  margin-bottom: 40px;
+}
+
+.test-progress-bar {
+  height: 2px;
+  background: var(--line);
+  position: relative;
+  margin-top: 8px;
+}
+
+.test-progress-bar > div {
+  height: 100%;
+  background: var(--oxblood);
+  transition: width 0.3s ease;
+}
+
+.test-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.test-item {
+  padding: 36px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.test-item:last-child { border-bottom: none; }
+
+.test-item-num {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--oxblood);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 16px;
+}
+
+.test-item-text {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.6vw, 26px);
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  font-weight: 350;
+  color: var(--ink);
+  margin: 0 0 24px;
+  max-width: 30ch;
+}
+
+.test-likert {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.test-likert button {
+  padding: 16px 8px;
+  border: 1px solid var(--line);
+  background: transparent;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  color: var(--ink-soft);
+  transition: all 0.15s;
+  line-height: 1.3;
+}
+
+.test-likert button:hover {
+  border-color: var(--ink-soft);
+  color: var(--ink);
+}
+
+.test-likert button.sel {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+  font-weight: 500;
+}
+
+.test-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0;
+  margin-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+/* Results */
+.result-hero {
+  padding: 60px 0 40px;
+  border-bottom: 1px solid var(--line);
+}
+
+.result-score {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.result-score-num {
+  font-family: var(--serif);
+  font-size: clamp(80px, 14vw, 160px);
+  line-height: 0.9;
+  font-weight: 350;
+  letter-spacing: -0.05em;
+}
+
+.result-score-meta { padding-bottom: 12px; }
+
+.result-score-level {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.6vw, 28px);
+  line-height: 1.2;
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 6px;
+}
+
+.result-bars {
+  padding: 60px 0;
+}
+
+.result-bar-row {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line-soft);
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  gap: 24px;
+  align-items: center;
+}
+
+.result-bar-name {
+  font-family: var(--serif);
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+
+.result-bar-name.facet {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  padding-left: 24px;
+}
+
+.result-bar-track {
+  position: relative;
+  height: 6px;
+  background: var(--line-soft);
+  margin-top: 8px;
+  grid-column: 1 / -1;
+}
+
+.result-bar-fill {
+  position: absolute;
+  height: 100%;
+  top: 0; left: 0;
+}
+
+.result-bar-value {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  letter-spacing: -0.01em;
+}
+
+.result-domain-block { margin-bottom: 36px; }
+
+/* Locked / upgrade gate */
+.lock-gate {
+  background: var(--bg-deep);
+  color: var(--bg);
+  padding: 64px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.lock-gate h2 { color: var(--bg); max-width: 18ch; margin-bottom: 0.4em; }
+.lock-gate p { color: rgba(250,248,243,0.78); max-width: 50ch; }
+.lock-gate .btn-primary {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg-deep);
+}
+.lock-gate .btn-primary:hover { background: var(--bg); border-color: var(--bg); color: var(--bg-deep); }
+
+.lock-preview {
+  margin-top: 48px;
+  padding: 32px;
+  border: 1px solid rgba(250,248,243,0.18);
+  background: rgba(250,248,243,0.04);
+  position: relative;
+}
+
+.lock-preview-content {
+  filter: blur(3px);
+  opacity: 0.55;
+  user-select: none;
+  pointer-events: none;
+}
+
+.lock-preview-icon {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--serif);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: var(--bg-deep);
+  padding: 12px 24px;
+  font-weight: 500;
+}
+
+/* Subtle animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up { animation: fadeUp 0.5s ease forwards; }
+
+/* Cookie consent */
+.cookie-banner {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  max-width: 480px;
+  background: var(--bg-deep);
+  color: var(--bg);
+  padding: 22px 24px;
+  font-size: 13px;
+  line-height: 1.55;
+  z-index: 100;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+  display: none;
+}
+
+.cookie-banner.show { display: block; animation: fadeUp 0.4s ease forwards; }
+
+.cookie-banner h4 { color: var(--bg); margin-bottom: 6px; font-size: 14px; }
+.cookie-banner p { margin: 0 0 14px; color: rgba(250,248,243,0.78); }
+.cookie-banner-actions { display: flex; gap: 8px; }
+.cookie-banner button {
+  padding: 8px 14px;
+  font-size: 12px;
+  background: transparent;
+  color: var(--bg);
+  border: 1px solid rgba(250,248,243,0.3);
+  cursor: pointer;
+  font-family: var(--sans);
+}
+.cookie-banner button:hover { background: rgba(250,248,243,0.1); }
+.cookie-banner button.primary { background: var(--gold); color: var(--bg-deep); border-color: var(--gold); }
+.cookie-banner button.primary:hover { background: var(--bg); border-color: var(--bg); color: var(--bg-deep); }
+
+/* Responsive guards */
+@media (max-width: 540px) {
+  .test-likert { grid-template-columns: repeat(5, 1fr); gap: 4px; }
+  .test-likert button { padding: 12px 4px; font-size: 11px; }
+  .stat-num { font-size: 32px; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="brand">EQ-<span class="ii">profil</span></a>
+    <div class="nav-links">
+      <a href="../index.html#hvordan">Sådan virker det</a>
+      <a href="../index.html#priser">Priser</a>
+      <a href="../index.html#demoer">Demoer</a>
+      <a href="../test.html" class="nav-cta">Tag testen</a>
+    </div>
+  </div>
+</nav>
+
+<div style="background: var(--gold); color: var(--bg-deep); padding: 12px 0; font-size: 13px; text-align: center; letter-spacing: 0.02em;">
+  <strong>Demoprofil</strong> — eksempel på en Executive-rapport. <a href="../test.html" style="color: var(--bg-deep); border-bottom-color: var(--bg-deep); margin-left: 8px;">Tag din egen test →</a>
+</div>
+
+<section class="result-hero" style="padding: 80px 0 40px;">
+  <div class="wrap-narrow">
+    <div class="eyebrow">Demoprofil 03 / Mediator</div>
+    <h1 style="margin-bottom: 0.4em;">Den empatiske <em>mediator</em></h1>
+    <p class="hero-lede" style="font-size: 18px; max-width: 50ch;">CHRO i international servicekoncern. 49 år. CEO ringer til hende, når noget brænder. Hendes team siger, hun er virksomhedens samvittighed. Hendes egne lederskabsambitioner er stået stille i fem år.</p>
+
+    <div class="result-score">
+      <div class="result-score-num" style="color: var(--score-3);">70</div>
+      <div class="result-score-meta">
+        <div class="result-score-level">Robust profil</div>
+        <div style="font-size: 13px; color: var(--muted); letter-spacing: 0.04em;">Empati i top, beslutninger i bund</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="result-bars section-pure">
+  <div class="wrap-narrow">
+    <div class="eyebrow">Domæner og facetter</div>
+    <h2 style="margin-bottom: 32px;">Profilens <em>landskab</em></h2>
+
+    <div class="result-domain-block">
+      <div class="result-bar-row">
+        <div class="result-bar-name"><span class="num" style="margin-right: 12px;">01</span>Selvbevidsthed</div>
+        <div class="result-bar-value">76</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 76%; background: var(--score-4);"></div></div>
+      </div>
+      <div class="result-bar-row" style="grid-template-columns: 1fr 60px;">
+        <div class="result-bar-name facet">Emotionel selvindsigt</div>
+        <div class="result-bar-value" style="font-size: 16px;">80</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 80%; background: var(--score-4);"></div></div>
+      </div>
+      <div class="result-bar-row" style="grid-template-columns: 1fr 60px;">
+        <div class="result-bar-name facet">Selvrespekt</div>
+        <div class="result-bar-value" style="font-size: 16px;">65</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 65%; background: var(--score-3);"></div></div>
+      </div>
+      <div class="result-bar-row" style="grid-template-columns: 1fr 60px;">
+        <div class="result-bar-name facet">Værdi- og formålsklarhed</div>
+        <div class="result-bar-value" style="font-size: 16px;">82</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 82%; background: var(--score-4);"></div></div>
+      </div>
+    </div>
+
+    <div class="result-domain-block">
+      <div class="result-bar-row">
+        <div class="result-bar-name"><span class="num" style="margin-right: 12px;">02</span>Selvledelse</div>
+        <div class="result-bar-value">55</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 55%; background: var(--score-3);"></div></div>
+      </div>
+      <div class="result-bar-row" style="grid-template-columns: 1fr 60px;">
+        <div class="result-bar-name facet">Emotionel selvkontrol</div>
+        <div class="result-bar-value" style="font-size: 16px;">70</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 70%; background: var(--score-3);"></div></div>
+      </div>
+      <div class="result-bar-row" style="grid-template-columns: 1fr 60px;">
+        <div class="result-bar-name facet">Tilpasningsevne</div>
+        <div class="result-bar-value" style="font-size: 16px;">60</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 60%; background: var(--score-3);"></div></div>
+      </div>
+      <div class="result-bar-row" style="grid-template-columns: 1fr 60px;">
+        <div class="result-bar-name facet">Resiliens & optimisme</div>
+        <div class="result-bar-value" style="font-size: 16px;">35</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 35%; background: var(--score-2);"></div></div>
+      </div>
+    </div>
+
+    <div class="result-domain-block">
+      <div class="result-bar-row">
+        <div class="result-bar-name"><span class="num" style="margin-right: 12px;">03</span>Social bevidsthed</div>
+        <div class="result-bar-value">92</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 92%; background: var(--score-5);"></div></div>
+      </div>
+      <div class="result-bar-row" style="grid-template-columns: 1fr 60px;">
+        <div class="result-bar-name facet">Empati</div>
+        <div class="result-bar-value" style="font-size: 16px;">98</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 98%; background: var(--score-5);"></div></div>
+      </div>
+      <div class="result-bar-row" style="grid-template-columns: 1fr 60px;">
+        <div class="result-bar-name facet">Organisatorisk bevidsthed</div>
+        <div class="result-bar-value" style="font-size: 16px;">90</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 90%; background: var(--score-5);"></div></div>
+      </div>
+      <div class="result-bar-row" style="grid-template-columns: 1fr 60px;">
+        <div class="result-bar-name facet">Social læseevne</div>
+        <div class="result-bar-value" style="font-size: 16px;">88</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 88%; background: var(--score-5);"></div></div>
+      </div>
+    </div>
+
+    <div class="result-domain-block">
+      <div class="result-bar-row">
+        <div class="result-bar-name"><span class="num" style="margin-right: 12px;">04</span>Relationsledelse</div>
+        <div class="result-bar-value">80</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 80%; background: var(--score-4);"></div></div>
+      </div>
+      <div class="result-bar-row" style="grid-template-columns: 1fr 60px;">
+        <div class="result-bar-name facet">Indflydelse</div>
+        <div class="result-bar-value" style="font-size: 16px;">75</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 75%; background: var(--score-4);"></div></div>
+      </div>
+      <div class="result-bar-row" style="grid-template-columns: 1fr 60px;">
+        <div class="result-bar-name facet">Konflikthåndtering</div>
+        <div class="result-bar-value" style="font-size: 16px;">88</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 88%; background: var(--score-5);"></div></div>
+      </div>
+      <div class="result-bar-row" style="grid-template-columns: 1fr 60px;">
+        <div class="result-bar-name facet">Inspirerende ledelse</div>
+        <div class="result-bar-value" style="font-size: 16px;">78</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 78%; background: var(--score-4);"></div></div>
+      </div>
+    </div>
+
+    <div class="result-domain-block">
+      <div class="result-bar-row">
+        <div class="result-bar-name"><span class="num" style="margin-right: 12px;">05</span>Beslutningskraft</div>
+        <div class="result-bar-value">45</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 45%; background: var(--score-2);"></div></div>
+      </div>
+      <div class="result-bar-row" style="grid-template-columns: 1fr 60px;">
+        <div class="result-bar-name facet">Klarhed under pres</div>
+        <div class="result-bar-value" style="font-size: 16px;">35</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 35%; background: var(--score-2);"></div></div>
+      </div>
+      <div class="result-bar-row" style="grid-template-columns: 1fr 60px;">
+        <div class="result-bar-name facet">Assertivitet & grænsesætning</div>
+        <div class="result-bar-value" style="font-size: 16px;">40</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 40%; background: var(--score-2);"></div></div>
+      </div>
+      <div class="result-bar-row" style="grid-template-columns: 1fr 60px;">
+        <div class="result-bar-name facet">Emotionel mod</div>
+        <div class="result-bar-value" style="font-size: 16px;">60</div>
+        <div class="result-bar-track"><div class="result-bar-fill" style="width: 60%; background: var(--score-3);"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" style="padding: 80px 0;">
+  <div class="wrap-narrow">
+    <div class="eyebrow">Level 2 — eksklusiv dybdeanalyse</div>
+    <h2 style="margin-bottom: 56px;">Coach<em>rapport</em></h2>
+
+    <article style="font-size: 17px; line-height: 1.75; color: var(--ink);">
+
+      <h3 style="font-family: var(--serif); font-size: 28px; font-weight: 400; letter-spacing: -0.02em; margin: 0 0 20px; padding-bottom: 16px; border-bottom: 1px solid var(--line);">Profilfortolkning</h3>
+
+      <p>Du er en mediator. Din profil viser sjælden styrke i social bevidsthed (92) — særligt i empati (98), hvor du scorer i den absolutte top. Du fornemmer hvad andre føler, før de selv har sat ord på det. Du kender de uskrevne politiske dynamikker i din organisation som få andre. Du kan facilitere konflikter, så folk forlader rummet med følelsen af at være hørt — selv når de ikke fik deres vilje.</p>
+
+      <p>Men din profil har en tydelig modvægt. Beslutningskraft scorer 45 og dykker ned i 35 på Klarhed under pres. Resiliens & optimisme ligger på 35 — det laveste tal i hele profilen. I praksis betyder det: Du absorberer andres følelser så fuldstændigt, at du selv har for lidt restkapacitet til at træffe de hårde, binære beslutninger din rolle kræver. Du ser fem perspektiver, hvor andre ser to. Det er en gave for forståelse. Det er en lammelse for handling.</p>
+
+      <p>Spændingen i din profil ligger mellem domæne 03 og domæne 05. Din empati er så stærk, at hver beslutning, der koster nogen noget, føles personligt for dig. Du har derfor lært at undgå disse beslutninger — eller at lade andre tage dem, så du kan trøste den ramte bagefter. Det er en stilstrategi, ikke en lederskabsstrategi. Den fungerer i en HR-supportrolle. Den slår dig ihjel som CHRO med direktionsplads.</p>
+
+      <h3 style="font-family: var(--serif); font-size: 28px; font-weight: 400; letter-spacing: -0.02em; margin: 56px 0 20px; padding-bottom: 16px; border-bottom: 1px solid var(--line);">Top 3 styrker</h3>
+
+      <h4 style="font-family: var(--serif); font-size: 22px; font-weight: 400; margin: 28px 0 8px;">Empati — 98</h4>
+      <p>Dette er din signaturstyrke, og den er sjælden i din kombination. De fleste mennesker scorer 50-70 her. Du scorer 98, fordi du registrerer mikroskift i andres tilstand, der er usynlige for andre. Du ved hvornår en kollega har sovet dårligt, før hun har drukket sin første kaffe. Det gør dig til en uvurderlig sparringspartner og en uovertruffen lytter. Det er også grunden til, at CEO ringer til dig, når noget bryder ud.</p>
+
+      <h4 style="font-family: var(--serif); font-size: 22px; font-weight: 400; margin: 28px 0 8px;">Organisatorisk bevidsthed — 90</h4>
+      <p>Du forstår, hvor magten reelt ligger — ikke hvor organisationsdiagrammet siger den er. Du ved hvilke uskrevne aftaler der bærer organisationen, og hvilke der gradvist er ved at smuldre. Det er strategisk efterretning, som de fleste topledere mangler. Du har den, men du bruger den primært til at <em>navigere</em> uden om problemer i stedet for at <em>konfrontere</em> dem.</p>
+
+      <h4 style="font-family: var(--serif); font-size: 22px; font-weight: 400; margin: 28px 0 8px;">Konflikthåndtering — 88</h4>
+      <p>Du kan facilitere en samtale mellem to mennesker, der ikke kan være i samme rum, og få dem til at forlade det med en arbejdsbar aftale. Det er ikke kompromisteknik — det er en evne til at finde det fælles dybere ærinde, begge ignorerer i øjeblikket. Det er en lederskabsegenskab, der er sin vægt værd i guld for organisationer i transformation.</p>
+
+      <h3 style="font-family: var(--serif); font-size: 28px; font-weight: 400; letter-spacing: -0.02em; margin: 56px 0 20px; padding-bottom: 16px; border-bottom: 1px solid var(--line);">Skyggesider ved styrkerne</h3>
+
+      <p>Din empati kan blive til <em>kronisk medfølelsesoverbelastning</em>. Du tager andre menneskers følelser med hjem, ned under puden, og videre ind i søvnen. Det forklarer din lave resiliens (35) — det er ikke fordi du ikke kan håndtere modgang. Det er fordi du håndterer alle andres modgang oven i din egen. Du har ikke en tank, der er tom. Du har en tank, der lækker.</p>
+
+      <p>Din organisatoriske bevidsthed kan blive til <em>strategisk passivitet</em>. Du ser hvor det halter, men du bruger informationen til at forudse hvor problemer vil opstå snarere end at forhindre dem. Det gør dig til en, der altid har ret bagefter — men aldrig påvirker fremtiden, fordi du ikke handlede, da du så det.</p>
+
+      <p>Din konflikthåndtering kan blive til <em>kompromisbedøvelse</em>. Du finder altid en mellemvej. Det er din signaturløsning. Men nogle konflikter har ikke en mellemvej — de har en rigtig side. En medarbejder der mobber. En leder der er underperforming. En politik der er forkert. Når du faciliterer en mellemløsning på de spørgsmål, beskytter du den dårlige adfærd. Din mediation bliver en undvigelse forklædt som visdom.</p>
+
+      <h3 style="font-family: var(--serif); font-size: 28px; font-weight: 400; letter-spacing: -0.02em; margin: 56px 0 20px; padding-bottom: 16px; border-bottom: 1px solid var(--line);">Top 3 udviklingsområder</h3>
+
+      <h4 style="font-family: var(--serif); font-size: 22px; font-weight: 400; margin: 28px 0 8px; color: var(--score-2);">Klarhed under pres — 35</h4>
+      <p>Når flere perspektiver kolliderer i dit hoved, lammer det dig. Du kan se hvorfor hver person har ret. Du kan se prisen ved hver løsning. Det forhindrer dig i at lande på én. I praksis betyder det, at organisationen mister beslutninger, hvor du var den rette til at træffe dem — og de bliver enten taget af nogen mindre kvalificeret eller bliver hængende i månedsvis. Den uendelige høring du holder i dig selv er ikke retfærdighed. Det er udskydelse.</p>
+
+      <h4 style="font-family: var(--serif); font-size: 22px; font-weight: 400; margin: 28px 0 8px; color: var(--score-2);">Resiliens & optimisme — 35</h4>
+      <p>Du er udmattet. Profilen viser det tydeligt. Det er ikke et personlighedstræk — det er et tegn på, at din kapacitetsmodel er forkert. Du absorberer for meget for andre uden tilstrækkelig genopladning. På mellemlang sigt fører det enten til burnout eller til en gradvis følelsesmæssig afstumpning, hvor du holder op med at føle som beskyttelsesmekanisme. Begge er dårlige nyheder for organisationen og for dig selv.</p>
+
+      <h4 style="font-family: var(--serif); font-size: 22px; font-weight: 400; margin: 28px 0 8px; color: var(--score-2);">Assertivitet & grænsesætning — 40</h4>
+      <p>Du har svært ved at sige nej, særligt når den der spørger har det skidt. Det er forståeligt — din empati gør, at andres ubehag ramte dig direkte. Men prisen er, at du beskytter andre fra konsekvenserne af deres egne valg. Du redder dem. De lærer ikke. Og din kalender bliver fyldt med problemer, der ikke er dine, fordi det er for ubehageligt for dig at lade andre løse dem selv.</p>
+
+      <h3 style="font-family: var(--serif); font-size: 28px; font-weight: 400; letter-spacing: -0.02em; margin: 56px 0 20px; padding-bottom: 16px; border-bottom: 1px solid var(--line);">Strategiske implikationer</h3>
+
+      <p>Din profil er optimal for én bestemt rolle: betroet rådgiver, talsperson for organisationens samvittighed, mediator i kritiske transformationer. Du leverer i denne kapacitet på højeste niveau. Din profil er suboptimal for én anden, vigtig rolle: den eksekutive HR-strateg, der træffer hårde personalebeslutninger på vegne af direktionen. Hvis din nuværende stilling kræver det sidste — og det gør CHRO-rollen — er du i en konstant rollekonflikt med dig selv.</p>
+
+      <p>Dit blinde punkt: du tror, at din empati er årsagen til din udmattelse, og at du må <em>begrænse</em> empatien for at få energi. Det er forkert. Empatien er ikke problemet. Manglen på grænsesætning omkring den er problemet. Du skal ikke føle mindre. Du skal beskytte din kapacitet til at føle. Det kræver assertivitet, ikke kølighed.</p>
+
+      <h3 style="font-family: var(--serif); font-size: 28px; font-weight: 400; letter-spacing: -0.02em; margin: 56px 0 20px; padding-bottom: 16px; border-bottom: 1px solid var(--line);">90-dages udviklingsplan</h3>
+
+      <h4 style="font-family: var(--serif); font-size: 20px; font-weight: 400; margin: 28px 0 12px;">Fokusområde 1: Træn binære beslutninger på 24 timer</h4>
+      <p style="font-size: 15px; margin-bottom: 8px;"><strong style="font-weight: 500;">Adfærdseksperiment:</strong> I 90 dage indfører du en regel: enhver beslutning der kommer på dit bord, skal være truffet inden for 24 timer. Hvis den ikke kan, hører du to inputs maksimalt og lander derefter. Du nedskriver din beslutning og dit ræsonnement i en kort note. Du må ikke høre flere perspektiver "for at sikre".</p>
+      <p style="font-size: 15px; margin-bottom: 8px;"><strong style="font-weight: 500;">Måleparameter:</strong> Hvor mange beslutninger træffer du inden for 24 timer? Start: anslået 30%. Mål: 80% efter 60 dage.</p>
+      <p style="font-size: 15px; margin-bottom: 24px;"><strong style="font-weight: 500;">Forventet modstand:</strong> Du vil føle, at du sjusker. At du ikke yder folk retfærdighed. Det er en illusion — den udskydelse, der føles retfærdig, er i virkeligheden uretfærdig over for alle, der venter på dit svar.</p>
+
+      <h4 style="font-family: var(--serif); font-size: 20px; font-weight: 400; margin: 32px 0 12px;">Fokusområde 2: Genopret din kapacitet — protected hours</h4>
+      <p style="font-size: 15px; margin-bottom: 8px;"><strong style="font-weight: 500;">Adfærdseksperiment:</strong> Block 90 minutters morgentid 4 dage om ugen, hvor du <em>ikke</em> taler med nogen. Brug tiden på fysisk bevægelse, læsning eller blot stilhed — ingen mails, ingen Slack. Sig højt til din assistent: "Disse blokke er hellige. Jeg er utilgængelig."</p>
+      <p style="font-size: 15px; margin-bottom: 8px;"><strong style="font-weight: 500;">Måleparameter:</strong> Antal beskyttede morgener pr. uge. Start: sandsynligvis 0. Mål: 4 efter 30 dage. Subjektiv energimåling: 1-10 skala hver fredag.</p>
+      <p style="font-size: 15px; margin-bottom: 24px;"><strong style="font-weight: 500;">Forventet modstand:</strong> Du vil føle, at du svigter. Der er altid nogen i krise i en organisation som din. Husk: en udmattet CHRO er en dårlig CHRO. Genopretning er ikke selvisk; det er ansvarlig drift.</p>
+
+      <h4 style="font-family: var(--serif); font-size: 20px; font-weight: 400; margin: 32px 0 12px;">Fokusområde 3: Lev med andres ubehag uden at fjerne det</h4>
+      <p style="font-size: 15px; margin-bottom: 8px;"><strong style="font-weight: 500;">Adfærdseksperiment:</strong> I 90 dage træner du følgende: når en kollega kommer til dig med et problem, der i virkeligheden er deres eget at løse, siger du: "Hvad har du selv overvejet?" og lader stilhed sætte ind. Du redder dem ikke. Du foreslår ikke. Du sender dem hjem til at tænke. Maksimalt to opfølgningssamtaler om samme sag.</p>
+      <p style="font-size: 15px; margin-bottom: 8px;"><strong style="font-weight: 500;">Måleparameter:</strong> Hvor mange "redninger" undlader du? Hold log. Start: anslået 5-10/uge. Mål: under 2/uge.</p>
+      <p style="font-size: 15px;"><strong style="font-weight: 500;">Forventet modstand:</strong> Du vil føle, at du er kold, distanceret, ulig dig selv. Den person der kommer til dig vil føle det samme. Begge dele er forventet og forbigående. Du træner et nyt mønster, ikke en ny personlighed.</p>
+
+      <h3 style="font-family: var(--serif); font-size: 28px; font-weight: 400; letter-spacing: -0.02em; margin: 56px 0 20px; padding-bottom: 16px; border-bottom: 1px solid var(--line);">5 coaching-spørgsmål</h3>
+
+      <ol style="padding-left: 24px; font-size: 17px; line-height: 1.7;">
+        <li style="margin-bottom: 16px; padding-left: 12px;">Hvornår sidst sagde du nej til en kollega, der havde det skidt — og hvad fortalte du dig selv om hvorfor det var nødvendigt?</li>
+        <li style="margin-bottom: 16px; padding-left: 12px;">Hvis din mor eller far havde lært dig, at andres ubehag <em>ikke</em> var dit ansvar — hvor anderledes ville din profil se ud i dag?</li>
+        <li style="margin-bottom: 16px; padding-left: 12px;">Hvad ville organisationen miste, hvis du holdt op med at redde mennesker fra deres egne dårlige valg?</li>
+        <li style="margin-bottom: 16px; padding-left: 12px;">Hvis du var nødt til at tage 3 hårde personalebeslutninger i denne måned — hvilke 3 har du allerede udskudt i over et år?</li>
+        <li style="margin-bottom: 16px; padding-left: 12px;">Når din resiliens er på 35 — hvad er den reelle pris for din familie, dit søvn, dine egne ambitioner?</li>
+      </ol>
+
+      <h3 style="font-family: var(--serif); font-size: 28px; font-weight: 400; letter-spacing: -0.02em; margin: 56px 0 20px; padding-bottom: 16px; border-bottom: 1px solid var(--line);">Brug i sparring med din coach</h3>
+
+      <p>I en udviklingssamtale skal du og din sparringspartner særligt fokusere på følgende:</p>
+      <ul style="font-size: 16px; line-height: 1.7; padding-left: 24px;">
+        <li style="margin-bottom: 8px;">Hvor stammer dit mønster med at absorbere andres følelser fra — og hvad bruger du det til?</li>
+        <li style="margin-bottom: 8px;">Forskellen mellem empati og medlidenhed — har du krydset grænsen den ene vej?</li>
+        <li style="margin-bottom: 8px;">Konkrete personalebeslutninger du har udskudt — hvor mange, hvor længe, hvad er prisen?</li>
+        <li style="margin-bottom: 8px;">Det forhold mellem din empati og din resiliens — er den ene betinget af den anden eller kan de adskilles?</li>
+        <li style="margin-bottom: 8px;">Hvilken type CHRO ville du være, hvis du turde være upopulær 5 dage om året?</li>
+      </ul>
+
+      <p style="font-style: italic; color: var(--muted); font-size: 14px; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line);">Denne demoprofil er konstrueret til illustration. Din egen rapport vil være genereret unikt baseret på dine svar — typisk leveret som 12-18 siders PDF inden for et minut efter betaling.</p>
+
+    </article>
+  </div>
+</section>
+
+<section class="section-deep" style="padding: 80px 0;">
+  <div class="wrap-narrow">
+    <div class="eyebrow" style="color: var(--gold);">Næste skridt</div>
+    <h2 style="color: var(--bg); max-width: 18ch;">Tag testen. <em>Få din egen rapport.</em></h2>
+    <p style="color: rgba(250,248,243,0.78); font-size: 17px; max-width: 50ch; margin: 24px 0;">Sådan ser kvalitetsniveauet ud for Executive-tieren. Standard-tieren rummer den samlede fortolkning og de 5 coaching-spørgsmål. Sparring-tieren tilføjer en 30 min Zoom med Thomas selv.</p>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+      <a href="../test.html" class="btn btn-primary btn-arrow" style="background: var(--gold); border-color: var(--gold); color: var(--bg-deep);">Start din test</a>
+      <a href="../index.html#priser" class="btn" style="border-color: rgba(250,248,243,0.4); color: var(--bg);">Se priser</a>
+      <a href="../index.html#demoer" class="btn" style="border-color: rgba(250,248,243,0.4); color: var(--bg);">Andre demoprofiler</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="footer-brand">Fr<span class="ii">ii</span>snæs</div>
+      <p class="footer-tag">Karakter · Disciplin · Klarhed.</p>
+    </div>
+    <div>
+      <h4>EQ Profile</h4>
+      <ul>
+        <li><a href="../test.html">Tag testen</a></li>
+        <li><a href="../index.html#priser">Priser</a></li>
+        <li><a href="../index.html#demoer">Demoer</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Friisnæs</h4>
+      <ul>
+        <li><a href="https://friisnaes.com">Executive coaching</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Juridisk</h4>
+      <ul>
+        <li><a href="../privacy.html">Privatlivspolitik</a></li>
+        <li><a href="../terms.html">Vilkår</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom" style="grid-column: 1 / -1;">
+      <span>© 2026 Friisnæs · Holte</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
