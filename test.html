@@ -1201,11 +1201,27 @@ function calculateScores(responses) {
 // ============================================================
 const API = 'https://eq-profile-api.friisnaes.workers.dev';
 
-const STRIPE_LINKS = {
+// ============================================================
+// Stripe — TEST_MODE switches between test and live Payment Links.
+//   true  = testpersoner bruger Stripe testkort 4242 4242 4242 4242
+//   false = rigtige kunder, rigtige betalinger
+// Flip to false + redeploy when going live.
+// ============================================================
+const TEST_MODE = true;
+
+const STRIPE_LINKS_TEST = {
+  standard:  'https://buy.stripe.com/test_3cI7sLfo73mO7632zR8bS00',
+  executive: 'https://buy.stripe.com/test_cNibJ11xhcXocqndev8bS01',
+  premium:   'https://buy.stripe.com/test_bJecN5gsb8H8aif1vN8bS02'
+};
+
+const STRIPE_LINKS_LIVE = {
   standard:  'https://buy.stripe.com/fZu7sL1xhf5w4XVeiz8bS09',
   executive: 'https://buy.stripe.com/eVqfZh1xh4qS8a73DV8bS0a',
   premium:   'https://buy.stripe.com/00w8wP4Jt5uW4XVcar8bS0b'
 };
+
+const STRIPE_LINKS = TEST_MODE ? STRIPE_LINKS_TEST : STRIPE_LINKS_LIVE;
 
 const LS_TOKEN = 'eq_token';
 const LS_EMAIL = 'eq_email';
@@ -1829,6 +1845,24 @@ function render() {
   else if (state.step === 'result') renderResult();
   else if (state.step === 'magic-loading') renderLoading('Henter din profil', 'Vi henter din gemte profil og gør den klar.');
   else if (state.step === 'stripe-loading') renderLoading('Bekræfter din betaling', 'Vi bekræfter betalingen og låser din fulde rapport op.');
+  renderTestBadge();
+}
+
+// Visible test-mode marker — so testers (and Thomas) never confuse test with live.
+function renderTestBadge() {
+  if (!TEST_MODE) {
+    const ex = document.getElementById('eqTestBadge');
+    if (ex) ex.remove();
+    return;
+  }
+  if (document.getElementById('eqTestBadge')) return;
+  const b = document.createElement('div');
+  b.id = 'eqTestBadge';
+  b.textContent = 'TESTMILJØ — brug kort 4242 4242 4242 4242';
+  b.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:9999;'
+    + 'background:#7C3A40;color:#fff;font-family:var(--sans),sans-serif;'
+    + 'font-size:12px;letter-spacing:0.04em;text-align:center;padding:7px 12px;';
+  document.body.appendChild(b);
 }
 
 // ============================================================
