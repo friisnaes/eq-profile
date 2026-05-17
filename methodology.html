@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Om metoden | EQ Profile Executive — Friisnæs</title>
+<meta name="description" content="Hvad EQ Profile Executive er — og hvad det ikke er. En ærlig redegørelse for metoden, dens grænser og dens styrker. Bygget på 20+ års coaching af C-level ledere." />
+<meta name="author" content="Thomas Friisnæs" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://eq-profile.com/methodology.html" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Om metoden | EQ Profile Executive" />
+<meta property="og:description" content="Hvad EQ Profile Executive er — og hvad det ikke er." />
+<meta property="og:url" content="https://eq-profile.com/methodology.html" />
+<meta property="og:locale" content="da_DK" />
+<meta property="og:site_name" content="Friisnæs" />
+
+<style>
+/* =====================================================
+   EQ Profile — Friisnæs design system (methodology.html)
+   Inherits from index.html — kept self-contained for portability
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Manrope:wght@300..600&display=swap');
+
+:root {
+  --bg: #FAF8F3;
+  --bg-alt: #F4F0E6;
+  --bg-pure: #FFFFFF;
+  --bg-deep: #1A1611;
+  --ink: #1A1611;
+  --ink-soft: #3D362C;
+  --muted: #6B6358;
+  --line: #E8E2D5;
+  --line-soft: #F0EBDD;
+  --oxblood: #7C3A40;
+  --forest: #2D4A30;
+  --gold: #A88857;
+  --rose: #C9A0A0;
+  --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --sans: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --container: 1200px;
+  --container-narrow: 880px;
+  --container-essay: 680px;
+  --gutter: clamp(20px, 4vw, 40px);
+  --section-y: clamp(64px, 9vw, 128px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14110D;
+    --bg-alt: #1C1814;
+    --bg-pure: #0F0D0A;
+    --bg-deep: #0F0D0A;
+    --ink: #F0EBDD;
+    --ink-soft: #C9C0AE;
+    --muted: #8B8273;
+    --line: #2A251E;
+    --line-soft: #1F1B16;
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.65;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wrap { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+.wrap-narrow { max-width: var(--container-narrow); margin: 0 auto; padding: 0 var(--gutter); }
+.wrap-essay { max-width: var(--container-essay); margin: 0 auto; padding: 0 var(--gutter); }
+
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: clamp(40px, 6vw, 64px); line-height: 1.05; letter-spacing: -0.025em; }
+h2 { font-size: clamp(28px, 4vw, 40px); line-height: 1.15; margin-top: 2.4em; margin-bottom: 0.6em; letter-spacing: -0.015em; }
+h3 { font-size: clamp(20px, 2.4vw, 24px); line-height: 1.3; margin-top: 1.8em; margin-bottom: 0.4em; }
+h4 { font-size: 14px; font-family: var(--sans); font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+em { font-style: italic; color: var(--oxblood); }
+p { margin: 0 0 1.2em; color: var(--ink-soft); }
+a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--oxblood); }
+ul { padding-left: 1.2em; margin: 0 0 1.4em; color: var(--ink-soft); }
+li { margin-bottom: 0.6em; }
+
+/* Navigation */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,248,243,0.92);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 16px var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--ink);
+}
+.brand .ii { font-style: italic; font-weight: 400; color: var(--oxblood); }
+.nav-links {
+  display: flex; gap: 28px; align-items: center;
+  font-size: 14px; font-weight: 400;
+}
+.nav-links a { text-decoration: none; color: var(--ink-soft); }
+.nav-links a:hover { color: var(--oxblood); }
+.nav-cta {
+  padding: 8px 16px;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  transition: all 0.2s;
+}
+.nav-cta:hover { background: var(--ink); color: var(--bg) !important; }
+@media (max-width: 720px) {
+  .nav-links a:not(.nav-cta) { display: none; }
+}
+
+/* Hero */
+.hero {
+  padding: clamp(56px, 10vw, 120px) 0 clamp(40px, 6vw, 72px);
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+.hero h1 {
+  max-width: 16ch;
+  margin-bottom: 0.4em;
+}
+.hero-lede {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(20px, 2.4vw, 24px);
+  line-height: 1.45;
+  color: var(--ink-soft);
+  max-width: 38ch;
+  margin: 0;
+}
+
+/* Section padding */
+section { padding: var(--section-y) 0; }
+.section-pure { background: var(--bg-pure); }
+.section-alt { background: var(--bg-alt); }
+.section-deep { background: var(--bg-deep); color: var(--bg); }
+.section-deep h1, .section-deep h2, .section-deep h3, .section-deep h4 { color: var(--bg); }
+.section-deep p { color: rgba(250,248,243,0.85); }
+.section-deep a { color: var(--gold); }
+
+/* Pull-quote */
+.pull-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(22px, 3vw, 28px);
+  line-height: 1.4;
+  color: var(--ink);
+  border-left: 3px solid var(--gold);
+  padding-left: 28px;
+  margin: 2.4em 0;
+  max-width: 32ch;
+}
+
+/* Comparison table */
+.what-is {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--line);
+  margin: 2.4em 0;
+}
+@media (max-width: 720px) {
+  .what-is { grid-template-columns: 1fr; }
+}
+.what-is > div {
+  padding: 28px 28px;
+}
+.what-is > div:first-child {
+  border-right: 1px solid var(--line);
+  background: var(--bg-alt);
+}
+@media (max-width: 720px) {
+  .what-is > div:first-child {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+}
+.what-is h4 {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.what-is h4.no { color: var(--oxblood); }
+.what-is h4.yes { color: var(--forest); }
+.what-is ul { padding-left: 1em; margin: 0; }
+.what-is li { font-size: 15px; color: var(--ink-soft); margin-bottom: 8px; }
+
+/* Numbered points */
+.numbered {
+  margin-top: 1.6em;
+}
+.numbered > div {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 24px;
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+}
+.numbered > div:last-child { border-bottom: 1px solid var(--line); }
+.numbered .num {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  padding-top: 4px;
+}
+.numbered h3 {
+  margin-top: 0;
+  margin-bottom: 0.4em;
+  font-size: 20px;
+}
+.numbered p:last-child { margin-bottom: 0; }
+
+/* CTA */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 0;
+}
+.btn:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+.btn-primary {
+  background: var(--ink);
+  color: var(--bg);
+}
+.btn-primary:hover {
+  background: var(--oxblood);
+  border-color: var(--oxblood);
+  color: var(--bg);
+}
+.btn-arrow::after { content: "→"; font-size: 16px; }
+
+/* Footer */
+footer {
+  background: var(--bg-deep);
+  color: var(--bg);
+  padding: 64px 0 32px;
+  font-size: 14px;
+}
+footer .wrap {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+@media (max-width: 720px) {
+  footer .wrap { grid-template-columns: 1fr 1fr; }
+}
+.footer-brand {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--bg);
+  margin-bottom: 12px;
+}
+.footer-brand .ii { font-style: italic; color: var(--gold); }
+.footer-tag {
+  font-size: 13px;
+  color: rgba(250,248,243,0.6);
+  line-height: 1.55;
+}
+footer h4 {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+footer ul { list-style: none; padding: 0; margin: 0; }
+footer li { margin-bottom: 8px; }
+footer a { color: rgba(250,248,243,0.78); text-decoration: none; }
+footer a:hover { color: var(--bg); }
+.footer-bottom {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(250,248,243,0.12);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 12px;
+  color: rgba(250,248,243,0.5);
+}
+.footer-bottom em { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav" id="top">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">EQ-<span class="ii">profil</span></a>
+    <div class="nav-links">
+      <a href="index.html#hvordan">Sådan virker det</a>
+      <a href="index.html#priser">Priser</a>
+      <a href="index.html#demoer">Demoer</a>
+      <a href="methodology.html">Om metoden</a>
+      <a href="test.html" class="nav-cta">Start profil</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="wrap-narrow">
+    <div class="eyebrow">Om metoden</div>
+    <h1>Hvad denne profil <em>er</em> — og hvad den <em>ikke er</em>.</h1>
+    <p class="hero-lede">En ærlig redegørelse for hvad du får, hvor metoden kommer fra, hvad den ikke kan, og hvorfor den alligevel er pengene værd.</p>
+  </div>
+</section>
+
+<!-- Body -->
+<section>
+  <div class="wrap-essay">
+
+    <h4>Det første du skal vide</h4>
+    <h2 style="margin-top: 0.4em;">Dette er <em>ikke</em> en certificeret psykometrisk test.</h2>
+
+    <p>EQ Profile Executive er ikke MSCEIT. Det er ikke EQ-i 2.0. Det er ikke TEIQue, Hogan eller noget andet instrument administreret af en autoriseret psykolog mod et certifikat. Hvis du har brug for et formelt assessment til rekruttering på direktionsniveau, klinisk vurdering eller forskningsbrug — så skal du bruge et af de instrumenter, og du skal bruge en certificeret administrator.</p>
+
+    <p>Det her er noget andet. Og noget andet kan også være nyttigt.</p>
+
+    <div class="what-is">
+      <div>
+        <h4 class="no">Hvad EQ Profile <em>ikke</em> er</h4>
+        <ul>
+          <li>Et certificeret psykometrisk instrument</li>
+          <li>Valideret med peer-reviewed normgrupper</li>
+          <li>Et diagnostisk redskab</li>
+          <li>Brugbart til rekrutterings­screening</li>
+          <li>En erstatning for klinisk vurdering</li>
+          <li>En kopi af EQ-i, MSCEIT eller andre instrumenter</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="yes">Hvad EQ Profile <em>er</em></h4>
+        <ul>
+          <li>Et struktureret refleksionsværktøj for ledere</li>
+          <li>Bygget gennem 20+ års coaching-praksis</li>
+          <li>Et sprogligt landkort over fem ledelsesrelevante domæner</li>
+          <li>En åbning til en bedre samtale — med dig selv, din coach, eller dit team</li>
+          <li>Designet til selvbetjent brug uden certificeret administrator</li>
+          <li>Skarpt prissat så det er en lav adgangsbillet til dyb refleksion</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>Forskellen mellem de to kolonner er ikke en svaghed — det er en bevidst designvalg. Et psykometrisk instrument har en pris, en administrationsbarriere og en tolkningsrutine der gør det utilgængeligt for de fleste ledere i deres daglige praksis. Et struktureret refleksionsværktøj har en helt anden funktion: at give dig sprog og rammer hurtigt nok til at du faktisk bruger det.</p>
+
+    <h2>Hvor metoden kommer fra</h2>
+
+    <p>De fem domæner i EQ Profile Executive — selvbevidsthed, selvledelse, social bevidsthed, relationsledelse og beslutningskraft — er inspireret af to centrale traditioner inden for emotionel intelligens:</p>
+
+    <ul>
+      <li><strong>Peter Salovey og John Mayers oprindelige model</strong> fra 1990, der definerede emotionel intelligens som evnen til at opfatte, forstå, regulere og bruge følelser i tænkning og handling.</li>
+      <li><strong>Daniel Golemans senere udvidelse</strong>, der knyttede modellen til lederskab og organisationsadfærd gennem fire domæner: selvbevidsthed, selvregulering, social bevidsthed og relationsledelse.</li>
+    </ul>
+
+    <p>Den femte domæne — <em>beslutningskraft</em> — er ikke fra den klassiske EI-litteratur. Den er tilføjet ud fra 15.000+ coaching-sessioner med ledere i den danske finanssektor, hvor det blev tydeligt at evnen til at træffe klare beslutninger under emotionelt pres er en selvstændig kompetence der ikke fanges af de fire klassiske domæner. Det er dén tilføjelse der gør profilen særligt brugbar for ledere på direktionsniveau.</p>
+
+    <div class="pull-quote">
+      Vi har ikke valideret denne profil mod en normgruppe. Vi har kalibreret den mod femten års coaching af C-level ledere.
+    </div>
+
+    <p>De 60 udsagn er formuleret med inspiration fra item-typer kendt fra både EQ-i 2.0 og ESCI — men de er <em>ikke</em> oversættelser eller kopier af proprietære items fra disse instrumenter. De er skrevet til ledelseskontekst, og halvdelen er formuleret omvendt for at minimere systematisk respons-bias.</p>
+
+    <h2>Hvad du faktisk får</h2>
+
+    <p>Når du tager profilen, sker der følgende:</p>
+
+    <div class="numbered">
+      <div>
+        <span class="num">01</span>
+        <div>
+          <h3>Du svarer på 60 udsagn</h3>
+          <p>5-punkts Likert-skala. Cirka 15 minutter. Halvdelen reverse-formuleret. Du bedes svare instinktivt — første reaktion er som regel mest præcis.</p>
+        </div>
+      </div>
+      <div>
+        <span class="num">02</span>
+        <div>
+          <h3>Du får et profil-billede</h3>
+          <p>Fem domæner, femten facetter, et samlet billede. Tallene er ikke en absolut score — de er indikatorer der hjælper dig med at se mønstre i din egen profil. Højt og lavt er ikke godt og dårligt: det er forskellige profiltyper, hver med deres egne styrker og skygger.</p>
+        </div>
+      </div>
+      <div>
+        <span class="num">03</span>
+        <div>
+          <h3>Du får en fortolkning</h3>
+          <p>Det er her værdien ligger. Den lette profil giver dig tallene; den fulde rapport oversætter dem til ledelses­implikationer. Hvad betyder det at du scorer højt på empati og lavt på assertivitet? Hvor bliver det dyrt for dig som leder? Hvad er dit næste træk? Det er den slags spørgsmål rapporten åbner.</p>
+        </div>
+      </div>
+      <div>
+        <span class="num">04</span>
+        <div>
+          <h3>Du beslutter selv hvor langt du går</h3>
+          <p>Den lette profil er gratis. Standardrapporten er 495 kr. Executive-versionen er 1.495 kr. Plus 30 minutters sparring direkte med mig: 4.995 kr. Alle priser er ex. moms. Du vælger først efter du har set hvad du får.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Hvorfor det alligevel er pengene værd</h2>
+
+    <p>Det er rimeligt at spørge: hvis dette ikke er et certificeret instrument, hvorfor skulle nogen betale for det?</p>
+
+    <p>Svaret er det modsatte af hvad mange forventer. Værdien ligger ikke i instrumentet — den ligger i <em>fortolkningen</em>. De 60 spørgsmål er en struktureret indgang til en samtale med dig selv. Rapporten er hvad jeg har lært gennem to årtiers arbejde med ledere på direktionsniveau, destilleret til skriftlig form og kalibreret til netop dit svar-mønster.</p>
+
+    <p>Sammenlign det med konsultationsprisen for en time hos en executive coach på mit niveau. Markedsprisen er 3.500-5.500 kr pr. time. Standardrapporten på 495 kr giver dig en struktureret observation der svarer til de første 20-30 minutter af et coachingforløb. Executive-versionen til 1.495 kr giver dig den fulde første samtale i skriftlig, gennemarbejdet form. Premium-versionen til 4.995 kr inkluderer faktisk 30 minutters dialog med mig.</p>
+
+    <p>Det er ikke et psykometrisk certifikat. Det er adgang til min praksis i en form du kan tage med dig og vende tilbage til.</p>
+
+    <h2>Hvornår du <em>ikke</em> skal bruge denne profil</h2>
+
+    <ul>
+      <li><strong>Til rekruttering</strong> — brug et certificeret instrument administreret af en autoriseret psykolog.</li>
+      <li><strong>Til diagnosticering af psykiske lidelser</strong> — det er ikke hvad værktøjet er bygget til, og resultaterne kan i værste fald være vildledende.</li>
+      <li><strong>Til forskning</strong> — uden valideret normgruppe holder dataene ikke til peer-review.</li>
+      <li><strong>Hvis du er på rejse efter <em>"sandheden om dig selv"</em></strong> — ingen 60-spørgsmåls profil kan levere det, og hvis nogen lover det, lyver de.</li>
+    </ul>
+
+    <h2>Hvornår du <em>skal</em> bruge den</h2>
+
+    <ul>
+      <li>Når du har taget en ny rolle, og din selvforståelse fra forrige rolle ikke længere matcher.</li>
+      <li>Når du har en fornemmelse af at noget i din ledelsesstil koster dig — men du kan ikke sætte ord på hvad.</li>
+      <li>Når du forbereder dig på en samtale med en coach, mentor eller bestyrelse, og du gerne vil komme klar i hovedet.</li>
+      <li>Når du leder en gruppe, og du vil have en fælles ramme for at tale om jeres profilforskelle uden at miste tid på instrument-administration.</li>
+      <li>Når du arbejder sammen med en coach, og I begge gerne vil have et fælles refleksionsdokument at gå ud fra.</li>
+    </ul>
+
+    <h2>Datasikkerhed og åbenhed</h2>
+
+    <p>Dine svar krypteres i transit og lagres pseudonymiseret hos en EU-baseret databehandler i 90 dage. Efter 90 dage slettes data automatisk. Du kan altid bede om sletning før — skriv til <a href="mailto:eq@friisnaes.com">eq@friisnaes.com</a>. Se også <a href="privacy.html">privatlivspolitikken</a>.</p>
+
+    <p>Aggregeret, anonymiseret data fra mange profiler bruges over tid til at finkalibrere fortolknings­tekster — aldrig til at identificere enkeltpersoner.</p>
+
+    <h2>Om afsenderen</h2>
+
+    <p>EQ Profile Executive er udviklet af <a href="https://friisnaes.com">Thomas Friisnæs</a>, executive coach med 20+ års erfaring og 15.000+ coaching-sessioner, primært med C-level ledere i den danske finanssektor. Forfatter til flere bøger om karakter-baseret ledelse. Læs mere om praksissen på <a href="https://friisnaes.com">friisnaes.com</a>.</p>
+
+    <p style="margin-top: 3em; font-style: italic; color: var(--muted);">Hvis denne side får dig til at vælge en anden løsning end EQ Profile — også fint. Den klarhed er værd at have, før du bruger penge eller tid.</p>
+
+  </div>
+</section>
+
+<!-- Closing CTA -->
+<section class="section-deep">
+  <div class="wrap-narrow">
+    <div class="eyebrow">Næste skridt</div>
+    <h2 style="margin-top: 0.4em;">Klar til at tage de 60 spørgsmål?</h2>
+    <p style="font-size: 18px; line-height: 1.6; max-width: 50ch;">
+      Den lette profil er gratis. Du kan altid stoppe der.
+    </p>
+    <div style="margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap;">
+      <a href="test.html" class="btn btn-primary btn-arrow" style="background: var(--gold); border-color: var(--gold); color: var(--bg-deep);">Start profil</a>
+      <a href="index.html#priser" class="btn" style="border-color: rgba(250,248,243,0.4); color: var(--bg);">Se priserne</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="footer-brand">Fr<span class="ii">ii</span>snæs</div>
+      <p class="footer-tag">Karakter · Disciplin · Klarhed. Executive coaching for ledere der vil skabe resultater uden burnout.</p>
+    </div>
+    <div>
+      <h4>EQ Profile</h4>
+      <ul>
+        <li><a href="test.html">Start profil</a></li>
+        <li><a href="index.html#priser">Priser</a></li>
+        <li><a href="index.html#demoer">Demoer</a></li>
+        <li><a href="methodology.html">Om metoden</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Friisnæs</h4>
+      <ul>
+        <li><a href="https://friisnaes.com">Executive coaching</a></li>
+        <li><a href="https://friisnaes.com/blog.html">Indsigter</a></li>
+        <li><a href="https://friisnaes.com/testimonials.html">Klienter</a></li>
+        <li><a href="https://friisnaes.com/#kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Juridisk</h4>
+      <ul>
+        <li><a href="privacy.html">Privatlivspolitik</a></li>
+        <li><a href="terms.html">Vilkår</a></li>
+        <li><a href="mailto:eq@friisnaes.com">eq@friisnaes.com</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-bottom" style="grid-column: 1 / -1;">
+      <span>© 2026 Friisnæs · Holte Stationsvej 18, 2840 Holte · CVR 27156348</span>
+      <span><em>Karakter · Disciplin · Klarhed</em></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

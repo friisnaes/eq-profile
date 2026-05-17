@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Tag testen | EQ Profile Executive — Friisnæs</title>
+<title>Start profil | EQ Profile Executive — Friisnæs</title>
 <meta name="description" content="60 spørgsmål om emotionel intelligens. Ca. 15 minutter. Gratis profilanalyse direkte i browseren — opgradér til fuld coachrapport hvis du vil." />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="canonical" href="https://friisnaes.com/eq-profile/test.html" />
@@ -1226,14 +1226,14 @@ function renderIntro() {
     <div style="background: var(--bg-alt); padding: 20px 24px; margin: 32px 0; border-left: 3px solid var(--gold);">
       <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px;">Dit valg</div>
       <div style="font-family: var(--serif); font-size: 18px;">${tierLabels[state.tier]}</div>
-      <div style="font-size: 13px; color: var(--ink-soft); margin-top: 4px;">Du betaler først efter testen er gennemført og du har set din lette profil. Så har du grundlag for valget.</div>
+      <div style="font-size: 13px; color: var(--ink-soft); margin-top: 4px;">Du betaler først efter profilen er gennemført og du har set den lette analyse. Så har du grundlag for valget.</div>
     </div>` : '';
 
   app().innerHTML = `
     <div class="wrap-narrow test-shell">
       <div class="eyebrow">EQ Executive Profile</div>
-      <h1 style="margin-bottom: 0.4em;">Tag de <em>60 spørgsmål</em>.</h1>
-      <p class="hero-lede" style="max-width: 38ch;">5-punkts skala. Cirka 15 minutter. Halvdelen af spørgsmålene er omvendt formuleret — svar instinktivt, første reaktion er som regel mest præcis.</p>
+      <h1 style="margin-bottom: 0.4em;">Tag de <em>60 udsagn</em>.</h1>
+      <p class="hero-lede" style="max-width: 38ch;">5-punkts skala. Cirka 15 minutter. Halvdelen af udsagnene er omvendt formuleret — svar instinktivt, første reaktion er som regel mest præcis.</p>
       ${selectedTierBlock}
 
       <div class="three-up" style="margin-top: 48px;">
@@ -1245,7 +1245,7 @@ function renderIntro() {
         <div>
           <span class="num">02</span>
           <h3>Få din lette profil</h3>
-          <p>Gratis. Du ser dit EQ-indeks, dine 5 domænescorer og dine top 3 styrker plus 3 vækstområder.</p>
+          <p>Gratis. Du ser dit samlede profil-billede, dine 5 domæneindikatorer og dine top 3 styrker plus 3 vækstområder.</p>
         </div>
         <div>
           <span class="num">03</span>
@@ -1255,10 +1255,10 @@ function renderIntro() {
       </div>
 
       <div style="margin-top: 56px; display: flex; gap: 12px; flex-wrap: wrap;">
-        <button class="btn btn-primary btn-arrow" onclick="window._st()">Start vurdering</button>
+        <button class="btn btn-primary btn-arrow" onclick="window._st()">Start profil</button>
         <a href="index.html" class="btn btn-ghost">Tilbage til oversigt</a>
       </div>
-      <p style="margin-top: 24px; font-size: 13px; color: var(--muted); font-style: italic;">Dine svar gemmes kun lokalt i browseren indtil du har set resultatet. <a href="privacy.html">Sådan håndterer vi data.</a></p>
+      <p style="margin-top: 24px; font-size: 13px; color: var(--muted); font-style: italic;">Dine svar gemmes kun lokalt i browseren indtil du har set resultatet. <a href="privacy.html">Sådan håndterer vi data.</a> <a href="methodology.html">Om metoden.</a></p>
     </div>
   `;
 }
@@ -1364,7 +1364,7 @@ function renderResult() {
           <div class="result-score-num" style="color: ${SCORE_COLORS[ov.n]};">${sc.overall}</div>
           <div class="result-score-meta">
             <div class="result-score-level">${ov.l}</div>
-            <div style="font-size: 13px; color: var(--muted); letter-spacing: 0.04em;">Samlet EQ-indeks · skala 0–100</div>
+            <div style="font-size: 13px; color: var(--muted); letter-spacing: 0.04em;">Samlet profil-indikator · 0–100</div>
           </div>
         </div>
       </div>
@@ -1398,7 +1398,7 @@ function renderResult() {
           </div>
         </div>
 
-        <p style="margin-top: 32px; font-size: 14px; color: var(--ink-soft); font-style: italic;">Det er hvad scorerne fortæller. Det er ikke hvad de <em>betyder</em>. Det er forskellen mellem Level 1 og Level 2.</p>
+        <p style="margin-top: 32px; font-size: 14px; color: var(--ink-soft); font-style: italic;">Det er hvad indikatorerne peger på. Det er ikke hvad de <em>betyder</em>. Det er forskellen mellem Level 1 og Level 2.</p>
       </div>
     </section>
 
@@ -1406,9 +1406,9 @@ function renderResult() {
     <section class="lock-gate">
       <div class="wrap-narrow">
         <div class="eyebrow">Level 2 — eksekutiv dybdeanalyse</div>
-        <h2>Forstå hvad scorerne <em>betyder</em>.</h2>
+        <h2>Forstå hvad indikatorerne <em>betyder</em>.</h2>
         <p style="font-size: 17px; line-height: 1.65; margin-top: 1rem;">
-          Den fulde coachrapport oversætter dit score-billede til lederskabsimplikationer. Hvor er dine reelle styrker — og hvor bliver de til skygger? Hvad er dit næste træk i de næste 90 dage? Hvilke 5 spørgsmål bør du stille dig selv, baseret på netop denne profilkombination?
+          Den fulde coachrapport oversætter dit profil-billede til lederskabsimplikationer. Hvor er dine reelle styrker — og hvor bliver de til skygger? Hvad er dit næste træk i de næste 90 dage? Hvilke 5 spørgsmål bør du stille dig selv, baseret på netop denne profilkombination?
         </p>
 
         <!-- Locked preview -->
@@ -1430,7 +1430,7 @@ function renderResult() {
 
     <section class="section-pure" style="padding: 48px 0;">
       <div class="wrap-narrow" style="text-align: center;">
-        <p style="font-size: 14px; color: var(--muted); margin-bottom: 12px;">Vil du tage testen igen?</p>
+        <p style="font-size: 14px; color: var(--muted); margin-bottom: 12px;">Vil du tage profilen igen?</p>
         <button class="btn btn-ghost" onclick="window._reset()">Start forfra</button>
       </div>
     </section>
@@ -1463,7 +1463,7 @@ window._chooseUpgrade = () => {
       <div class="wrap">
         <div class="eyebrow" style="color: var(--gold);">Lås op for Level 2</div>
         <h2 style="color: var(--bg); margin-bottom: 0.4em;">Vælg din <em>dybde</em>.</h2>
-        <p style="color: rgba(250,248,243,0.78); max-width: 50ch; font-size: 17px;">Din testbesvarelse er gemt. Du betaler først nu, hvor du har set hvad du får. Du modtager den fulde rapport som PDF inden for et minut.</p>
+        <p style="color: rgba(250,248,243,0.78); max-width: 50ch; font-size: 17px;">Din besvarelse er gemt. Du betaler først nu, hvor du har set hvad du får. Du modtager den fulde rapport som PDF inden for et minut.</p>
         <p style="color: rgba(250,248,243,0.5); font-size: 13px; letter-spacing: 0.04em; margin-top: 8px;">Alle priser er ex. moms.</p>
 
         <div class="pricing-grid" style="margin-top: 48px; background: rgba(250,248,243,0.04); border-color: rgba(250,248,243,0.15);">
