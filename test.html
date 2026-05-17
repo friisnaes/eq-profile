@@ -1196,12 +1196,93 @@ function calculateScores(responses) {
 }
 
 // --- State ---
+// ============================================================
+// API + persistence config
+// ============================================================
+const API = 'https://eq-profile-api.friisnaes.workers.dev';
+
+const STRIPE_LINKS = {
+  standard:  'https://buy.stripe.com/fZu7sL1xhf5w4XVeiz8bS09',
+  executive: 'https://buy.stripe.com/eVqfZh1xh4qS8a73DV8bS0a',
+  premium:   'https://buy.stripe.com/00w8wP4Jt5uW4XVcar8bS0b'
+};
+
+const LS_TOKEN = 'eq_token';
+const LS_EMAIL = 'eq_email';
+const LS_DRAFT = 'eq_draft';   // local autosave of responses before email given
+
+// ---- JWT helpers (localStorage) ----
+function saveToken(token, email) {
+  try {
+    localStorage.setItem(LS_TOKEN, token);
+    if (email) localStorage.setItem(LS_EMAIL, email);
+  } catch (e) { /* private mode — token lives in memory only */ }
+}
+function getToken() {
+  try { return localStorage.getItem(LS_TOKEN); } catch (e) { return null; }
+}
+function getStoredEmail() {
+  try { return localStorage.getItem(LS_EMAIL); } catch (e) { return null; }
+}
+function clearToken() {
+  try {
+    localStorage.removeItem(LS_TOKEN);
+    localStorage.removeItem(LS_EMAIL);
+  } catch (e) {}
+}
+// Decode JWT payload without verifying (verification is the Worker's job)
+function decodeToken(token) {
+  if (!token) return null;
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/')));
+    if (payload.exp && payload.exp < Math.floor(Date.now() / 1000)) return null;
+    return payload;
+  } catch (e) { return null; }
+}
+function tokenValid() { return !!decodeToken(getToken()); }
+
+// ---- Local draft autosave (responses before email captured) ----
+function saveDraft() {
+  try { localStorage.setItem(LS_DRAFT, JSON.stringify({ responses: state.responses, page: state.page })); } catch (e) {}
+}
+function loadDraft() {
+  try {
+    const d = JSON.parse(localStorage.getItem(LS_DRAFT) || 'null');
+    if (d && Array.isArray(d.responses) && d.responses.length === 60) return d;
+  } catch (e) {}
+  return null;
+}
+function clearDraft() {
+  try { localStorage.removeItem(LS_DRAFT); } catch (e) {}
+}
+
+// ---- API call wrapper ----
+async function api(path, opts = {}) {
+  const headers = { 'Content-Type': 'application/json', ...(opts.headers || {}) };
+  const token = getToken();
+  if (token && opts.auth !== false) headers['Authorization'] = `Bearer ${token}`;
+  const res = await fetch(API + path, {
+    method: opts.method || 'GET',
+    headers,
+    body: opts.body ? JSON.stringify(opts.body) : undefined
+  });
+  let data = null;
+  try { data = await res.json(); } catch (e) {}
+  return { ok: res.ok, status: res.status, data };
+}
+
+// ============================================================
+// State
+// ============================================================
 let state = {
-  step: 'intro',     // intro | test | result
+  step: 'intro',     // intro | email | test | result | magic-loading | stripe-loading
   page: 0,
   responses: new Array(60).fill(null),
   scores: null,
-  tier: null         // null | 'standard' | 'executive' | 'premium'
+  tier: null,        // null | 'standard' | 'executive' | 'premium'
+  email: null,
+  busy: false,       // generic in-flight flag
+  notice: null       // transient message shown on intro
 };
 
 // Read tier from URL on load
@@ -1229,18 +1310,24 @@ function renderIntro() {
       <div style="font-size: 13px; color: var(--ink-soft); margin-top: 4px;">Du betaler først efter profilen er gennemført og du har set den lette analyse. Så har du grundlag for valget.</div>
     </div>` : '';
 
+  const noticeBlock = state.notice ? `
+    <div style="background: ${state.notice.type === 'error' ? '#FBEDED' : 'var(--bg-alt)'}; padding: 16px 20px; margin: 24px 0; border-left: 3px solid ${state.notice.type === 'error' ? 'var(--oxblood)' : 'var(--forest)'}; font-size: 14px; color: var(--ink-soft);">
+      ${state.notice.text}
+    </div>` : '';
+
   app().innerHTML = `
     <div class="wrap-narrow test-shell">
       <div class="eyebrow">EQ Executive Profile</div>
       <h1 style="margin-bottom: 0.4em;">Tag de <em>60 udsagn</em>.</h1>
       <p class="hero-lede" style="max-width: 38ch;">5-punkts skala. Cirka 15 minutter. Halvdelen af udsagnene er omvendt formuleret — svar instinktivt, første reaktion er som regel mest præcis.</p>
+      ${noticeBlock}
       ${selectedTierBlock}
 
       <div class="three-up" style="margin-top: 48px;">
         <div>
           <span class="num">01</span>
           <h3>Besvar</h3>
-          <p>Du svarer på 60 udsagn — fra "helt uenig" til "helt enig". Ingen tilmelding kræves for at starte.</p>
+          <p>Du svarer på 60 udsagn — fra "helt uenig" til "helt enig". Du angiver din email først, så din profil kan gemmes og hentes igen.</p>
         </div>
         <div>
           <span class="num">02</span>
@@ -1258,11 +1345,156 @@ function renderIntro() {
         <button class="btn btn-primary btn-arrow" onclick="window._st()">Start profil</button>
         <a href="index.html" class="btn btn-ghost">Tilbage til oversigt</a>
       </div>
-      <p style="margin-top: 24px; font-size: 13px; color: var(--muted); font-style: italic;">Dine svar gemmes kun lokalt i browseren indtil du har set resultatet. <a href="privacy.html">Sådan håndterer vi data.</a> <a href="methodology.html">Om metoden.</a></p>
+      <p style="margin-top: 24px; font-size: 13px; color: var(--muted);">
+        Har du allerede taget profilen på en anden enhed?
+        <a href="#" onclick="window._retrieve(); return false;" style="color: var(--ink-soft);">Hent den med et login-link.</a>
+      </p>
+      <p style="margin-top: 12px; font-size: 13px; color: var(--muted); font-style: italic;">Din profil gemmes krypteret hos en EU-databehandler i 90 dage. <a href="privacy.html">Sådan håndterer vi data.</a> <a href="methodology.html">Om metoden.</a></p>
     </div>
   `;
 }
-window._st = () => go('test');
+window._st = () => { state.notice = null; go('email'); };
+
+// ============================================================
+// Email gate — capture identity before the test
+// ============================================================
+function renderEmail() {
+  const prefill = state.email || getStoredEmail() || '';
+  app().innerHTML = `
+    <div class="wrap-narrow test-shell">
+      <div class="eyebrow">Før du starter</div>
+      <h1 style="margin-bottom: 0.4em;">Hvor skal din <em>profil</em> sendes hen?</h1>
+      <p class="hero-lede" style="max-width: 42ch;">Din email bruges som nøgle til din profil — så den kan gemmes undervejs, hentes igen på en anden enhed, og din coachrapport kan leveres hvis du låser op.</p>
+
+      <div style="margin-top: 40px; max-width: 420px;">
+        <label style="display: block; font-size: 13px; letter-spacing: 0.04em; color: var(--muted); margin-bottom: 8px;">Din email</label>
+        <input id="eqEmail" type="email" inputmode="email" autocomplete="email" value="${prefill}"
+          placeholder="navn@virksomhed.dk"
+          style="width: 100%; padding: 14px 16px; font-size: 16px; font-family: var(--sans); border: 1px solid var(--line); background: var(--bg-pure); color: var(--ink); border-radius: 0;"
+          onkeydown="if(event.key==='Enter')window._submitEmail()" />
+        <div id="eqEmailErr" style="font-size: 13px; color: var(--oxblood); margin-top: 8px; min-height: 18px;"></div>
+      </div>
+
+      <div style="margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+        <button id="eqEmailBtn" class="btn btn-primary btn-arrow" onclick="window._submitEmail()">Fortsæt til de 60 udsagn</button>
+        <button class="btn btn-ghost" onclick="window._backToIntro()">Tilbage</button>
+      </div>
+
+      <p style="margin-top: 28px; font-size: 13px; color: var(--muted); font-style: italic; max-width: 46ch;">
+        Vi sender dig ikke nyhedsbreve uden samtykke. Din email gemmes krypteret hos en EU-databehandler i 90 dage og bruges kun til din profil. <a href="privacy.html">Privatlivspolitik.</a>
+      </p>
+    </div>
+  `;
+}
+window._backToIntro = () => go('intro');
+
+window._submitEmail = async () => {
+  if (state.busy) return;
+  const input = $('eqEmail');
+  const errEl = $('eqEmailErr');
+  const btn = $('eqEmailBtn');
+  const email = (input.value || '').trim().toLowerCase();
+
+  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && email.length <= 254;
+  if (!valid) {
+    errEl.textContent = 'Indtast en gyldig email-adresse.';
+    input.focus();
+    return;
+  }
+  errEl.textContent = '';
+  state.busy = true;
+  btn.textContent = 'Et øjeblik …';
+  btn.disabled = true;
+
+  try {
+    const r = await api('/api/start', { method: 'POST', auth: false, body: { email } });
+    if (!r.ok || !r.data || !r.data.token) {
+      errEl.textContent = 'Noget gik galt. Prøv igen om et øjeblik.';
+      state.busy = false; btn.disabled = false; btn.textContent = 'Fortsæt til de 60 udsagn';
+      return;
+    }
+    saveToken(r.data.token, email);
+    state.email = email;
+    state.busy = false;
+
+    // Returning user with a completed profile already on file
+    const st = r.data.state || {};
+    if (st.hasScores) {
+      if (confirm('Vi har allerede en profil gemt på denne email. Vil du hente den i stedet for at tage testen forfra?\n\nOK = hent gemt profil · Annullér = tag testen igen')) {
+        await loadSavedProfile();
+        return;
+      }
+    }
+
+    // Resume local draft if present
+    const draft = loadDraft();
+    if (draft && draft.responses.some(x => x != null)) {
+      state.responses = draft.responses;
+      state.page = draft.page || 0;
+    }
+    go('test');
+  } catch (e) {
+    errEl.textContent = 'Kunne ikke få forbindelse. Tjek dit internet og prøv igen.';
+    state.busy = false; btn.disabled = false; btn.textContent = 'Fortsæt til de 60 udsagn';
+  }
+};
+
+// ============================================================
+// Cross-device retrieval via magic link
+// ============================================================
+window._retrieve = () => {
+  const email = prompt('Indtast den email du brugte til din profil. Vi sender dig et login-link.');
+  if (email == null) return;
+  const clean = email.trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clean)) {
+    state.notice = { type: 'error', text: 'Det lignede ikke en gyldig email. Prøv igen.' };
+    render();
+    return;
+  }
+  api('/api/request-magic-link', { method: 'POST', auth: false, body: { email: clean } })
+    .then(() => {
+      state.notice = { type: 'ok', text: `Hvis der findes en profil på ${clean}, har vi sendt et login-link dertil. Tjek din indbakke — linket gælder i 15 minutter.` };
+      render();
+    })
+    .catch(() => {
+      state.notice = { type: 'error', text: 'Kunne ikke sende login-link lige nu. Prøv igen om lidt.' };
+      render();
+    });
+};
+
+// ============================================================
+// Loading screen (magic link / stripe verification)
+// ============================================================
+function renderLoading(title, sub) {
+  app().innerHTML = `
+    <div class="wrap-narrow test-shell" style="text-align: center; padding-top: 80px;">
+      <div class="eyebrow">${title}</div>
+      <h1 style="margin: 0.4em 0;">Et øjeblik …</h1>
+      <p class="hero-lede" style="max-width: 36ch; margin: 0 auto;">${sub}</p>
+    </div>
+  `;
+}
+
+// Load the saved profile for the currently-authenticated user
+async function loadSavedProfile() {
+  go('magic-loading');
+  try {
+    const r = await api('/api/load-test', { method: 'GET' });
+    if (r.ok && r.data && Array.isArray(r.data.responses)) {
+      state.responses = r.data.responses;
+      state.scores = r.data.scores || calculateScores(r.data.responses);
+      if (r.data.tier) state.tier = r.data.tier;
+      if (r.data.email) state.email = r.data.email;
+      go('result');
+    } else {
+      state.notice = { type: 'error', text: 'Vi kunne ikke hente en gemt profil. Du kan tage testen forfra.' };
+      go('intro');
+    }
+  } catch (e) {
+    state.notice = { type: 'error', text: 'Kunne ikke hente din profil lige nu. Prøv igen senere.' };
+    go('intro');
+  }
+}
 
 function renderTest() {
   const a = state.page * PER_PAGE;
@@ -1308,16 +1540,30 @@ function renderTest() {
     </div>
   `;
 }
-window._a = (i, v) => { state.responses[i] = v; render(); };
-window._b = () => { if (state.page > 0) { state.page--; render(); window.scrollTo(0, 0); } };
-window._n = () => {
+window._a = (i, v) => { state.responses[i] = v; saveDraft(); render(); };
+window._b = () => { if (state.page > 0) { state.page--; saveDraft(); render(); window.scrollTo(0, 0); } };
+window._n = async () => {
   if (state.page === Math.ceil(60 / PER_PAGE) - 1) {
     state.scores = calculateScores(state.responses);
+    // Persist to KV under the user's email — fire and continue
+    saveProfileToKV();
+    clearDraft();
     go('result');
     return;
   }
-  state.page++; render(); window.scrollTo(0, 0);
+  state.page++; saveDraft(); render(); window.scrollTo(0, 0);
 };
+
+// Save responses + scores to the Worker (KV). Non-blocking; result shows regardless.
+async function saveProfileToKV() {
+  if (!tokenValid()) return; // no identity — shouldn't happen post email-gate
+  try {
+    await api('/api/save-test', {
+      method: 'POST',
+      body: { responses: state.responses, scores: state.scores }
+    });
+  } catch (e) { /* silent — local state still intact, retry on upgrade */ }
+}
 
 function renderResult() {
   const sc = state.scores;
@@ -1517,31 +1763,126 @@ window._chooseUpgrade = () => {
 };
 
 window._buy = (tier) => {
-  // PLACEHOLDER for fase 2 — Stripe Payment Link integration goes here
-  // For now, store the intended purchase and show a "coming soon" flow
-  const stripeLinks = {
-    // FASE 2: Replace with real Stripe Payment Links from dashboard
-    standard: 'https://buy.stripe.com/test_PLACEHOLDER_standard',
-    executive: 'https://buy.stripe.com/test_PLACEHOLDER_executive',
-    premium: 'https://buy.stripe.com/test_PLACEHOLDER_premium'
-  };
-  alert(`Fase 2 integration: Her vil du blive sendt videre til Stripe Checkout for ${tier}-pakken.\n\nLink: ${stripeLinks[tier]}\n\nEfter betaling: Stripe webhook → Cloudflare Worker → coachrapport genereres → email med PDF sendes via Resend.`);
+  const link = STRIPE_LINKS[tier];
+  if (!link) { alert('Ukendt pakke. Genindlæs siden og prøv igen.'); return; }
+
+  // Make sure the latest profile is in KV before payment, so the report can be generated
+  saveProfileToKV();
+
+  // Pre-fill the buyer's email on Stripe Checkout so it matches their JWT identity
+  const email = state.email || getStoredEmail();
+  let url = link;
+  if (email) {
+    url += (link.includes('?') ? '&' : '?') + 'prefilled_email=' + encodeURIComponent(email);
+  }
+  window.location.href = url;
 };
 
+// ============================================================
+// Stripe return — verify payment and unlock tier
+// ============================================================
+async function handleStripeReturn(sessionId) {
+  go('stripe-loading');
+  // Need a valid token to verify — the email used at checkout must match
+  if (!tokenValid()) {
+    state.notice = { type: 'error', text: 'Din session var udløbet, da du vendte tilbage fra betaling. Hent din profil med et login-link, så aktiverer vi dit køb.' };
+    go('intro');
+    return;
+  }
+  try {
+    const r = await api('/api/stripe-success', { method: 'POST', body: { sessionId } });
+    if (r.ok && r.data && r.data.tier) {
+      state.tier = r.data.tier;
+      // Load the full profile (responses/scores) so result page can render
+      const lr = await api('/api/load-test', { method: 'GET' });
+      if (lr.ok && lr.data && Array.isArray(lr.data.responses)) {
+        state.responses = lr.data.responses;
+        state.scores = lr.data.scores || calculateScores(lr.data.responses);
+        if (lr.data.email) state.email = lr.data.email;
+      }
+      state.notice = null;
+      go('result');
+    } else {
+      const msg = (r.data && r.data.error) || 'Vi kunne ikke bekræfte betalingen.';
+      state.notice = { type: 'error', text: `${msg} Hvis beløbet er trukket, så kontakt eq@friisnaes.com — vi ordner det.` };
+      go('intro');
+    }
+  } catch (e) {
+    state.notice = { type: 'error', text: 'Kunne ikke bekræfte betalingen lige nu. Kontakt eq@friisnaes.com hvis beløbet er trukket.' };
+    go('intro');
+  }
+}
+
 window._reset = () => {
-  if (confirm('Er du sikker? Dine svar slettes.')) {
-    state = { step: 'intro', page: 0, responses: new Array(60).fill(null), scores: null, tier: state.tier };
+  if (confirm('Er du sikker? Dine svar slettes, og du logges ud af denne enhed.')) {
+    clearToken();
+    clearDraft();
+    state = { step: 'intro', page: 0, responses: new Array(60).fill(null), scores: null, tier: state.tier, email: null, busy: false, notice: null };
     render();
   }
 };
 
 function render() {
   if (state.step === 'intro') renderIntro();
+  else if (state.step === 'email') renderEmail();
   else if (state.step === 'test') renderTest();
   else if (state.step === 'result') renderResult();
+  else if (state.step === 'magic-loading') renderLoading('Henter din profil', 'Vi henter din gemte profil og gør den klar.');
+  else if (state.step === 'stripe-loading') renderLoading('Bekræfter din betaling', 'Vi bekræfter betalingen og låser din fulde rapport op.');
 }
 
-document.addEventListener('DOMContentLoaded', render);
+// ============================================================
+// Init — handle magic-link and Stripe-return entry points
+// ============================================================
+async function init() {
+  const params = new URLSearchParams(window.location.search);
+  const magic = params.get('magic');
+  const sessionId = params.get('session_id');
+
+  // Helper: strip query params from the URL bar without reloading
+  const cleanUrl = () => {
+    try { window.history.replaceState({}, document.title, window.location.pathname); } catch (e) {}
+  };
+
+  // --- Magic link entry ---
+  if (magic) {
+    render(); // paint something immediately
+    go('magic-loading');
+    try {
+      const r = await api('/api/verify', { method: 'POST', auth: false, body: { magic } });
+      if (r.ok && r.data && r.data.token) {
+        saveToken(r.data.token, r.data.email);
+        if (r.data.email) state.email = r.data.email;
+        cleanUrl();
+        await loadSavedProfile();
+        return;
+      } else {
+        cleanUrl();
+        state.notice = { type: 'error', text: 'Login-linket var ugyldigt eller udløbet. Bed om et nyt nedenfor.' };
+        go('intro');
+        return;
+      }
+    } catch (e) {
+      cleanUrl();
+      state.notice = { type: 'error', text: 'Kunne ikke bruge login-linket lige nu. Prøv igen om lidt.' };
+      go('intro');
+      return;
+    }
+  }
+
+  // --- Stripe return entry ---
+  if (sessionId) {
+    cleanUrl();
+    await handleStripeReturn(sessionId);
+    return;
+  }
+
+  // --- Normal entry ---
+  // If a valid token + finished profile exists locally, offer fast resume via load
+  render();
+}
+
+document.addEventListener('DOMContentLoaded', init);
 
 </script>
 </body>
